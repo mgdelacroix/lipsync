@@ -7,41 +7,39 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/mgdelacroix/lipsync/config"
+
 	"github.com/gorilla/feeds"
 	"github.com/urfave/cli/v2"
 )
 
 func generateAction(c *cli.Context) error {
-	title := c.String("title")
-	description := c.String("description")
-	link := c.String("link")
-	files := c.String("files")
-	image := c.String("image")
+	cfg, err := config.ReadConfig(c.String("config"))
+	if err != nil {
+		return err
+	}
 	outFile := c.String("out-file")
-
 	beginningOfTime := time.UnixMilli(0)
 
-	// ToDo: validation
-
-	fileInfos, err := ioutil.ReadDir(files)
+	fileInfos, err := ioutil.ReadDir(cfg.Directory)
 	if err != nil {
 		return err
 	}
 
 	feed := &feeds.Feed{
-		Title:       title,
-		Link:        &feeds.Link{Href: link},
-		Description: description,
+		Title:       cfg.Title,
+		Link:        &feeds.Link{Href: cfg.PodcastURL},
+		Description: cfg.Description,
 		Image: &feeds.Image{
-			Url:   link + "/" + image,
-			Title: image,
-			Link:  link + "/" + image,
+			Url:   cfg.PodcastURL + "/" + cfg.Image,
+			Title: cfg.Image,
+			Link:  cfg.PodcastURL + "/" + cfg.Image,
 		},
 		Created: beginningOfTime,
 	}
 
 	for i, fileInfo := range fileInfos {
-		itemLink := link + "/" + fileInfo.Name()
+		itemLink := cfg.PodcastURL + "/" + fileInfo.Name()
 
 		feed.Add(&feeds.Item{
 			Title:       fileInfo.Name(),
@@ -72,29 +70,9 @@ func main() {
 				Usage: "generates a podcast RSS file",
 				Flags: []cli.Flag{
 					&cli.StringFlag{
-						Name:     "title",
-						Usage:    "the title of the podcast",
-						Required: true,
-					},
-					&cli.StringFlag{
-						Name:  "description",
-						Usage: "the description of the podcast",
-						Value: "",
-					},
-					&cli.StringFlag{
-						Name:     "link",
-						Usage:    "the base URL where the podcast will be served",
-						Required: true,
-					},
-					&cli.StringFlag{
-						Name:     "files",
-						Usage:    "the directory of the podcast files",
-						Required: true,
-					},
-					&cli.StringFlag{
-						Name:  "image",
-						Usage: "the path to the podcast image",
-						Value: "",
+						Name:  "config",
+						Usage: "the path to the configuration",
+						Value: "lipsync.yaml",
 					},
 					&cli.StringFlag{
 						Name:  "out-file",

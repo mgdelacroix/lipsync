@@ -5,4 +5,5 @@ install:
 	go build ./cmd/lipsync
 
 fmt:
+	go mod tidy
 	go fmt ./...
