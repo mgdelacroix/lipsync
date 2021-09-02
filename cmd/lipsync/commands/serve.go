@@ -1,4 +1,4 @@
-package main
+package commands
 
 import (
 	"fmt"
@@ -12,7 +12,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-func serveAction(c *cli.Context) error {
+func ServeAction(c *cli.Context) error {
 	port := c.Int("port")
 	cfg, err := config.ReadConfig(c.String("config"))
 	if err != nil {

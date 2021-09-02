@@ -4,6 +4,8 @@ import (
 	"log"
 	"os"
 
+	"github.com/mgdelacroix/lipsync/cmd/lipsync/commands"
+
 	"github.com/urfave/cli/v2"
 )
 
@@ -27,7 +29,7 @@ func main() {
 						Value: "out.rss",
 					},
 				},
-				Action: generateAction,
+				Action: commands.GenerateAction,
 			},
 			{
 				Name:  "serve",
@@ -44,7 +46,7 @@ func main() {
 						Value: 8080,
 					},
 				},
-				Action: serveAction,
+				Action: commands.ServeAction,
 			},
 		},
 	}

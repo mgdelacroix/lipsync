@@ -1,4 +1,4 @@
-package main
+package commands
 
 import (
 	"io/ioutil"
@@ -11,7 +11,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-func generateAction(c *cli.Context) error {
+func GenerateAction(c *cli.Context) error {
 	cfg, err := config.ReadConfig(c.String("config"))
 	if err != nil {
 		return err
