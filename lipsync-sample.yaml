@@ -3,4 +3,4 @@ title: Example podcast
 description: The description of the podcast
 podcastURL: http://localhost:8080
 directory: files
-image: podcast_cover.jpg
+image: podcast_cover.webp

@@ -33,6 +33,11 @@ func main() {
 				Name:  "serve",
 				Usage: "starts a HTTP server with the podcast information",
 				Flags: []cli.Flag{
+					&cli.StringFlag{
+						Name:  "config",
+						Usage: "the path to the configuration",
+						Value: "lipsync.yaml",
+					},
 					&cli.IntFlag{
 						Name:  "port",
 						Usage: "the port for the web server",

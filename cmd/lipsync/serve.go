@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/signal"
 
+	"github.com/mgdelacroix/lipsync/config"
 	"github.com/mgdelacroix/lipsync/server"
 
 	"github.com/urfave/cli/v2"
@@ -13,7 +14,12 @@ import (
 
 func serveAction(c *cli.Context) error {
 	port := c.Int("port")
-	srv, err := server.NewServer(port)
+	cfg, err := config.ReadConfig(c.String("config"))
+	if err != nil {
+		return err
+	}
+
+	srv, err := server.NewServer(cfg, port)
 	if err != nil {
 		return err
 	}
