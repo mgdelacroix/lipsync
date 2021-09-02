@@ -11,3 +11,8 @@ content.
 ```sh
 $ lipsync -title "Sample podcast" -link "http://samplepodcast.com/files" -files ./files
 ```
+
+## Roadmap
+
+- [ ] Add configuration file to avoid passing all details as flags.
+- [ ] Add a -serve option that will start a simple webserver.
