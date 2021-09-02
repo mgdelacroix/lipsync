@@ -1,0 +1,4 @@
+---
+run:
+  concurrency: 4
+  tests: true

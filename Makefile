@@ -7,3 +7,6 @@ install:
 fmt:
 	go mod tidy
 	go fmt ./...
+
+lint:
+	golangci-lint run ./...

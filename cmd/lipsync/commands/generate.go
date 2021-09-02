@@ -53,7 +53,9 @@ func GenerateAction(c *cli.Context) error {
 		return err
 	}
 
-	ioutil.WriteFile(outFile, []byte(rss), 0755)
+	if err := ioutil.WriteFile(outFile, []byte(rss), 0755); err != nil {
+		return err
+	}
 
 	return nil
 }
