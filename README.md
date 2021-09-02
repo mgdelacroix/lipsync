@@ -9,7 +9,7 @@ video apps, that tend not to be as comfortable for this kind of
 content.
 
 ```sh
-$ lipsync -title "Sample podcast" -link "http://samplepodcast.com/files" -files ./files
+$ lipsync generate --title "Sample podcast" --link "http://samplepodcast.com/files" --files ./files
 ```
 
 ## Roadmap
