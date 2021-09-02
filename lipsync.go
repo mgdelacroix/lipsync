@@ -15,6 +15,7 @@ func main() {
 	descriptionFlag := flag.String("description", "", "the description of the podcast")
 	linkFlag := flag.String("link", "", "the link of the podcast")
 	filesFlag := flag.String("files", ".", "the directory of the podcast files")
+	imageFlag := flag.String("image", "", "the image path")
 	outFile := flag.String("out-file", "out.rss", "the name of the output file")
 	flag.Parse()
 
@@ -31,6 +32,11 @@ func main() {
 		Title: *titleFlag,
 		Link: &feeds.Link{Href: *linkFlag},
 		Description: *descriptionFlag,
+		Image: &feeds.Image{
+			Url: *linkFlag+"/"+*imageFlag,
+			Title: *imageFlag,
+			Link: *linkFlag+"/"+*imageFlag,
+		},
 		Created: beginningOfTime,
 	}
 
