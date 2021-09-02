@@ -29,7 +29,7 @@ func ServeAction(c *cli.Context) error {
 	signal.Notify(sigs, os.Interrupt)
 
 	go func() {
-		fmt.Printf("starting server on port %d\n", port)
+		fmt.Printf("server running on http://localhost:%d\n", port)
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			fmt.Fprintf(os.Stderr, "error while running the server: %s\n", err)
 		}
