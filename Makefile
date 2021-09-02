@@ -8,5 +8,5 @@ fmt:
 	go mod tidy
 	go fmt ./...
 
-lint:
+check:
 	golangci-lint run ./...
