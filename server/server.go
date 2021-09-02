@@ -30,6 +30,8 @@ func NewServer(cfg *config.Config, port int) (*http.Server, error) {
 		fmt.Fprint(w, rssString)
 	})
 
+	mux.Handle("/files/", http.StripPrefix("/files/", http.FileServer(http.Dir(cfg.Directory))))
+
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Hello world")
 	})

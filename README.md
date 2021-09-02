@@ -16,5 +16,5 @@ $ lipsync generate --title "Sample podcast" --link "http://samplepodcast.com/fil
 
 - [X] Add configuration file to avoid passing all details as flags.
 - [X] Add a -serve option that will start a simple webserver.
-- [ ] Serve podcast files in a subpath as part of the webserver.
+- [X] Serve podcast files in a subpath as part of the webserver.
 - [ ] Add a homepage in /

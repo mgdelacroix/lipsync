@@ -23,15 +23,15 @@ func GeneratePodcastRss(cfg *config.Config) (string, error) {
 		Link:        &feeds.Link{Href: cfg.PodcastURL},
 		Description: cfg.Description,
 		Image: &feeds.Image{
-			Url:   cfg.PodcastURL + "/" + cfg.Image,
+			Url:   cfg.PodcastURL + "/image",
 			Title: cfg.Image,
-			Link:  cfg.PodcastURL + "/" + cfg.Image,
+			Link:  cfg.PodcastURL + "/image",
 		},
 		Created: beginningOfTime,
 	}
 
 	for i, fileInfo := range fileInfos {
-		itemLink := cfg.PodcastURL + "/" + fileInfo.Name()
+		itemLink := cfg.PodcastURL + "/files/" + fileInfo.Name()
 
 		feed.Add(&feeds.Item{
 			Title:       fileInfo.Name(),
