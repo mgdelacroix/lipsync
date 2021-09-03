@@ -2,7 +2,7 @@ build:
 	go build ./cmd/lipsync
 
 install:
-	go build ./cmd/lipsync
+	go install ./cmd/lipsync
 
 fmt:
 	go mod tidy

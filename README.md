@@ -25,5 +25,12 @@ GLOBAL OPTIONS:
    --help, -h  show help (default: false)
 
 
-$ lipsync generate --title "Sample podcast" --link "http://samplepodcast.com/files" --files ./files
+# copy the sample configuration file
+$ cp lipsync-sample.yaml lipsync.yaml
+
+# after tuning the file, generate the RSS file
+$ lipsync generate
+
+# or start the webserver
+$ lipsync serve
 ```
